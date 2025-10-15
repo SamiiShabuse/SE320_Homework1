@@ -8,7 +8,10 @@ public class BinarySearch {
     // code at runtime to test your test suite.
     protected static <T extends Comparable<T>> int binarySearchImplementation(T[] array, T elem) {
 	// TODO: Implement binary search here. The signature above sets you up to ensure the array elements have a compareTo method
-        if (elem == null) return -1;
-        return elem.compareTo(elem);
+        int left = 0;
+        int right = array.length - 1;
+
+
+        }
     }
 }
