@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BinarySearch.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SE320_Homework1</a> &gt; <a href="index.source.html" class="el_package">edu.drexel.se320</a> &gt; <span class="el_source">BinarySearch.java</span></div><h1>BinarySearch.java</h1><pre class="source lang-java linenums">package edu.drexel.se320;
+import java.util.NoSuchElementException;
+<span class="fc" id="L3">public class BinarySearch {</span>
+
+    // DO NOT MODIFY THIS SIGNATURE
+    // This includes the protected modifier; the autograder currently relies
+    // on a combination of overloading and visibility hacks to swap out your
+    // code at runtime to test your test suite.
+    protected static &lt;T extends Comparable&lt;T&gt;&gt; int binarySearchImplementation(T[] array, T elem) {
+	// TODO: Implement binary search here. The signature above sets you up to ensure the array elements have a compareTo method
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        if (array == null) throw new NullPointerException(&quot;array&quot;);</span>
+<span class="fc" id="L12">        int left = 0;</span>
+<span class="fc" id="L13">        int right = array.length - 1;</span>
+
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        while (left &lt;= right) {</span>
+<span class="fc" id="L16">            int mid = left + (right - left) / 2;</span>
+<span class="fc" id="L17">            int compare =  elem.compareTo(array[mid]);</span>
+
+<span class="fc bfc" id="L19" title="All 2 branches covered.">            if  (compare == 0) {</span>
+<span class="fc" id="L20">                return mid; // Element was found</span>
+            }
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            else if (compare &lt; 0) {</span>
+<span class="fc" id="L23">                right = mid - 1; // Search the left half</span>
+            }
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">            else if (compare &gt; 0) {</span>
+<span class="fc" id="L26">                left = mid + 1; // search the right half</span>
+            }
+<span class="fc" id="L28">        }</span>
+<span class="nc" id="L29">        throw new NoSuchElementException(&quot;Element was not in array.&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
