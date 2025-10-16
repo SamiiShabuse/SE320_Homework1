@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.DisplayName;
+
 public class ClosedBoxTests extends BinarySearchBase {
 
     /**
@@ -37,9 +39,43 @@ public class ClosedBoxTests extends BinarySearchBase {
     }
 
     @Test
-    public void test1() {
-        // Delete this test once you're sure you can run the code.
-        assertEquals(0, 0);
+    @DisplayName("Find element in the middle of a sorted array")
+    void findMiddle() {
+        Integer[] arr = {1, 3, 5, 7, 9};
+        int idx = BinarySearch.binarySearchImplementation(arr, 5);
+        assertEquals(5, arr[idx]); // spec: if index returned, arr[idx].equals(target)
+    }
+
+    @Test
+    @DisplayName("Find first element (boundary at start)")
+    void findFirst() {
+        Integer[] arr = {10, 20, 30, 40};
+        int idx = BinarySearch.binarySearchImplementation(arr, 10);
+        assertEquals(10, arr[idx]);
+    }
+
+    @Test
+    @DisplayName("Find last element (boundary at end)")
+    void findLast() {
+        Integer[] arr = {10, 20, 30, 40};
+        int idx = BinarySearch.binarySearchImplementation(arr, 40);
+        assertEquals(40, arr[idx]);
+    }
+
+    @Test
+    @DisplayName("Find in single-element array")
+    void singleElementFound() {
+        Integer[] arr = {42};
+        int idx = BinarySearch.binarySearchImplementation(arr, 42);
+        assertEquals(42, arr[idx]);
+    }
+
+    @Test
+    @DisplayName("Duplicates: returns any matching index")
+    void duplicatesAnyMatchIsValid() {
+        Integer[] arr = {2, 4, 4, 4, 8};
+        int idx = BinarySearch.binarySearchImplementation(arr, 4);
+        assertEquals(4, arr[idx]); // any of indices 1..3 acceptable per spec
     }
 
     @Test
