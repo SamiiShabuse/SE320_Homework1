@@ -7,7 +7,13 @@ public class BinarySearch {
     // on a combination of overloading and visibility hacks to swap out your
     // code at runtime to test your test suite.
     protected static <T extends Comparable<T>> int binarySearchImplementation(T[] array, T elem) {
-        if (array == null) throw new NullPointerException("array");
+        
+        // Input validation
+        if (array == null) throw new IllegalArgumentException("array");
+        if (elem == null) throw new IllegalArgumentException("elem");
+        if (array.length == 0) throw new IllegalArgumentException("Input array is empty");
+
+        // Binary search implementation
         int left = 0;
         int right = array.length - 1;
 

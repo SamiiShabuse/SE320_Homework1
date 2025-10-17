@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.drexel.se320.ClosedBoxTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-10-17T00:42:34.698Z" hostname="TREVORYOUNG" time="0.055">
+<testsuite name="edu.drexel.se320.ClosedBoxTests" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-10-17T00:48:29.736Z" hostname="TREVORYOUNG" time="0.062">
   <properties/>
-  <testcase name="Target not present: NoSuchElementException with informative message" classname="edu.drexel.se320.ClosedBoxTests" time="0.036"/>
-  <testcase name="Find in single-element array" classname="edu.drexel.se320.ClosedBoxTests" time="0.01"/>
-  <testcase name="Find last element (boundary at end)" classname="edu.drexel.se320.ClosedBoxTests" time="0.002"/>
+  <testcase name="Target not present: NoSuchElementException with informative message" classname="edu.drexel.se320.ClosedBoxTests" time="0.034"/>
+  <testcase name="Empty array → IllegalArgumentException with informative message" classname="edu.drexel.se320.ClosedBoxTests" time="0.006"/>
+  <testcase name="Find in single-element array" classname="edu.drexel.se320.ClosedBoxTests" time="0.004"/>
+  <testcase name="Find last element (boundary at end)" classname="edu.drexel.se320.ClosedBoxTests" time="0.0"/>
   <testcase name="Find element in the middle of a sorted array" classname="edu.drexel.se320.ClosedBoxTests" time="0.001"/>
   <testcase name="Find first element (boundary at start)" classname="edu.drexel.se320.ClosedBoxTests" time="0.001"/>
+  <testcase name="Null array → IllegalArgumentException with informative message" classname="edu.drexel.se320.ClosedBoxTests" time="0.001"/>
   <testcase name="Duplicates: returns any matching index" classname="edu.drexel.se320.ClosedBoxTests" time="0.0"/>
+  <testcase name="Binary search must not modify the input array" classname="edu.drexel.se320.ClosedBoxTests" time="0.005"/>
+  <testcase name="Null target → IllegalArgumentException with informative message" classname="edu.drexel.se320.ClosedBoxTests" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
