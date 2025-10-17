@@ -7,7 +7,6 @@ public class BinarySearch {
     // on a combination of overloading and visibility hacks to swap out your
     // code at runtime to test your test suite.
     protected static <T extends Comparable<T>> int binarySearchImplementation(T[] array, T elem) {
-	// TODO: Implement binary search here. The signature above sets you up to ensure the array elements have a compareTo method
         if (array == null) throw new NullPointerException("array");
         int left = 0;
         int right = array.length - 1;
@@ -26,6 +25,6 @@ public class BinarySearch {
                 left = mid + 1; // search the right half
             }
         }
-        throw new NoSuchElementException("Element was not in array.");
+        throw new NoSuchElementException("Element was not in array: " + elem);
     }
 }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.drexel.se320.OpenBoxTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-10-16T12:21:02.182Z" hostname="SAMIIWORKAHOLIC" time="0.04">
-  <properties/>
-  <testcase name="Go left then find (cmp &lt; 0 path exercised)" classname="edu.drexel.se320.OpenBoxTests" time="0.032"/>
-  <testcase name="Go right then find (cmp &gt; 0 path exercised)" classname="edu.drexel.se320.OpenBoxTests" time="0.006"/>
-  <testcase name="Found immediately at first mid (cmp == 0)" classname="edu.drexel.se320.OpenBoxTests" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

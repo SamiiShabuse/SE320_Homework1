@@ -8,7 +8,12 @@ import static org.hamcrest.Matchers.lessThan;
 
 // Core JUnit 5
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.DisplayName;
@@ -79,23 +84,40 @@ public class ClosedBoxTests extends BinarySearchBase {
     }
 
     @Test
-    public void testExceptions() {
-	Exception exception = assertThrows(UnsupportedOperationException.class,
-        /* The bit between this and the next comment is a 
-        * *lambda expression*: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#syntax
-        * If you've taken PL, this is Java's lambda.
-        * If not, this is like special syntax for a function object with one method.
-        * Notice the form is:
-        *   _args_ -> { body }
-        * The body here simply throws an exception so you can see how the exception assertions work, but in general this is where you'd write code you expect to throw an exception when run.
-        */
-            () -> { throw new UnsupportedOperationException("Bad jasdf;lkasdjlfk"); }
-        /* end of lambda expression. The () at the beginning is the (empty)
-        * argument list of the lambda */
-        ); // <-- This is closing off the call to assertThrows
-        // Here you can use any methods on the Exception type to inspect whether the right exception was thrown.
-     	assertEquals("Bad Operation", exception.getMessage());   
+    @DisplayName("Target not present: NoSuchElementException with informative message")
+    void notFoundThrowsNoSuchElement() {
+        Integer[] arr = {1, 2, 4, 8, 16};
+        NoSuchElementException ex = assertThrows(
+            NoSuchElementException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, 3)
+        );
+        
+        String msg = ex.getMessage();
+        assertNotNull(msg);
+        // Just looking for the word "not" in the message to show it indicates not found.
+        assertTrue(msg.toLowerCase().contains("not"), "Message should indicate not found: " + msg);
     }
+
+    
+
+    // @Test
+    // public void testExceptions() {
+	// Exception exception = assertThrows(UnsupportedOperationException.class,
+    //     /* The bit between this and the next comment is a 
+    //     * *lambda expression*: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#syntax
+    //     * If you've taken PL, this is Java's lambda.
+    //     * If not, this is like special syntax for a function object with one method.
+    //     * Notice the form is:
+    //     *   _args_ -> { body }
+    //     * The body here simply throws an exception so you can see how the exception assertions work, but in general this is where you'd write code you expect to throw an exception when run.
+    //     */
+    //         () -> { throw new UnsupportedOperationException("Bad jasdf;lkasdjlfk"); }
+    //     /* end of lambda expression. The () at the beginning is the (empty)
+    //     * argument list of the lambda */
+    //     ); // <-- This is closing off the call to assertThrows
+    //     // Here you can use any methods on the Exception type to inspect whether the right exception was thrown.
+    //  	assertEquals("Bad Operation", exception.getMessage());   
+    // }
 
 }
 
