@@ -113,7 +113,7 @@ public class ClosedBoxTests extends BinarySearchBase {
     }
 
     @Test
-    @DisplayName("Null array → IllegalArgumentException with informative message")
+    @DisplayName("Null array: IllegalArgumentException with informative message")
     void nullArray() {
         IllegalArgumentException ex = assertThrows(
             IllegalArgumentException.class,
@@ -123,7 +123,7 @@ public class ClosedBoxTests extends BinarySearchBase {
     }
 
     @Test
-    @DisplayName("Empty array → IllegalArgumentException with informative message")
+    @DisplayName("Empty array: IllegalArgumentException with informative message")
     void emptyArray() {
         Integer[] arr = {};
         IllegalArgumentException ex = assertThrows(
@@ -134,7 +134,7 @@ public class ClosedBoxTests extends BinarySearchBase {
     }
 
     @Test
-    @DisplayName("Null target → IllegalArgumentException with informative message")
+    @DisplayName("Null target: IllegalArgumentException with informative message")
     void nullTarget() {
         Integer[] arr = {1, 2, 3};
         IllegalArgumentException ex = assertThrows(
