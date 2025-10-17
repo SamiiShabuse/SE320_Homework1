@@ -5,10 +5,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.lessThan;
-
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 // Core JUnit 5
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.DisplayName;
@@ -79,23 +86,82 @@ public class ClosedBoxTests extends BinarySearchBase {
     }
 
     @Test
-    public void testExceptions() {
-	Exception exception = assertThrows(UnsupportedOperationException.class,
-        /* The bit between this and the next comment is a 
-        * *lambda expression*: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#syntax
-        * If you've taken PL, this is Java's lambda.
-        * If not, this is like special syntax for a function object with one method.
-        * Notice the form is:
-        *   _args_ -> { body }
-        * The body here simply throws an exception so you can see how the exception assertions work, but in general this is where you'd write code you expect to throw an exception when run.
-        */
-            () -> { throw new UnsupportedOperationException("Bad jasdf;lkasdjlfk"); }
-        /* end of lambda expression. The () at the beginning is the (empty)
-        * argument list of the lambda */
-        ); // <-- This is closing off the call to assertThrows
-        // Here you can use any methods on the Exception type to inspect whether the right exception was thrown.
-     	assertEquals("Bad Operation", exception.getMessage());   
+    @DisplayName("Target not present: NoSuchElementException with informative message")
+    void notFoundThrowsNoSuchElement() {
+        Integer[] arr = {1, 2, 4, 8, 16};
+        NoSuchElementException ex = assertThrows(
+            NoSuchElementException.class, () -> BinarySearch.binarySearchImplementation(arr, 3)
+        );
+        
+        String msg = ex.getMessage();
+        assertNotNull(msg);
+        // Just looking for the word "not" in the message to show it indicates not found.
+        assertTrue(msg.toLowerCase().contains("not"), "Message should indicate not found: " + msg);
     }
+
+    @Test
+    @DisplayName("Binary search must not modify the input array")
+    void arrayNotModified() {
+        Integer[] arr = {1, 3, 5, 7, 9};
+        Integer[] snapshot = Arrays.copyOf(arr, arr.length);
+
+        // run a few searches and ensure the array stays the same
+        assertDoesNotThrow(() -> BinarySearch.binarySearchImplementation(arr, 7));
+        assertThrows(NoSuchElementException.class, () -> BinarySearch.binarySearchImplementation(arr, 6));
+
+        assertArrayEquals(snapshot, arr, "Search must not modify the input array");
+    }
+
+    @Test
+    @DisplayName("Null array: IllegalArgumentException with informative message")
+    void nullArray() {
+        IllegalArgumentException ex = assertThrows(
+            IllegalArgumentException.class,
+            () -> BinarySearch.binarySearchImplementation(null, 1)
+        );
+        assertTrue(ex.getMessage() != null && !ex.getMessage().isBlank());
+    }
+
+    @Test
+    @DisplayName("Empty array: IllegalArgumentException with informative message")
+    void emptyArray() {
+        Integer[] arr = {};
+        IllegalArgumentException ex = assertThrows(
+            IllegalArgumentException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, 1)
+        );
+        assertTrue(ex.getMessage() != null && !ex.getMessage().isBlank());
+    }
+
+    @Test
+    @DisplayName("Null target: IllegalArgumentException with informative message")
+    void nullTarget() {
+        Integer[] arr = {1, 2, 3};
+        IllegalArgumentException ex = assertThrows(
+            IllegalArgumentException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, null)
+        );
+        assertTrue(ex.getMessage() != null && !ex.getMessage().isBlank());
+    }
+
+    // @Test
+    // public void testExceptions() {
+	// Exception exception = assertThrows(UnsupportedOperationException.class,
+    //     /* The bit between this and the next comment is a 
+    //     * *lambda expression*: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#syntax
+    //     * If you've taken PL, this is Java's lambda.
+    //     * If not, this is like special syntax for a function object with one method.
+    //     * Notice the form is:
+    //     *   _args_ -> { body }
+    //     * The body here simply throws an exception so you can see how the exception assertions work, but in general this is where you'd write code you expect to throw an exception when run.
+    //     */
+    //         () -> { throw new UnsupportedOperationException("Bad jasdf;lkasdjlfk"); }
+    //     /* end of lambda expression. The () at the beginning is the (empty)
+    //     * argument list of the lambda */
+    //     ); // <-- This is closing off the call to assertThrows
+    //     // Here you can use any methods on the Exception type to inspect whether the right exception was thrown.
+    //  	assertEquals("Bad Operation", exception.getMessage());   
+    // }
 
 }
 
