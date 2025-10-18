@@ -8,8 +8,8 @@ Assignment: Homework 1
 
 # Overview
 
-For this assignment I had implemented a generic binary search in java. The function returns the index of a found elemnet or throws
-the necessary exception based on elementing or invalid input.
+For this assignment I had implemented a generic binary search in java. The function returns the index of a found element or throws
+the necessary exception based on missing or invalid input.
 
 The assignment required validating this method through two types of testing:
     - Closed-Box Testing (requirements testing with no code visibility)
@@ -19,9 +19,11 @@ Both were using JUnit testing
 
 # Closed-Box Testing
 
-For closed-box testing, I designed test cases based on the assignments requirements WITHOUT looking at the source code. So based on this I used equivalence partitioning to identify categories of valid and invalid inputs and boundary value analysis to select represenetative edge cases. 
+For closed-box testing, I designed test cases based on the assignments requirements WITHOUT looking at the source code. So based on this I used equivalence partitioning to identify categories of valid and invalid inputs and boundary value analysis to select representative edge cases. 
 
-The valid input parittions included arrays where the target elment was present, arrays where it was absent, arrays with duplicate elements, and single-element arrays. 
+I first listed equivalence partitions and boundary cases on paper, then implemented those as my closed-box tests before moving on to open-box testing for coverage as way to mentally note what I actually needed for this part of the assignment. I was focused on reading it as a user of someone who doesn't understand how to use to application such as someone who is non-technical.
+
+The valid input paritions included arrays where the target elment was present, arrays where it was absent, arrays with duplicate elements, and single-element arrays. 
 
 The invalid input partitions included a null array, an empty array, and a null target element. So each each test case was written to verify that the binary search method will either return the correct index or throw correct exception type with an informative error message.
 
@@ -33,7 +35,7 @@ In addition, I also made sure the binary search would not modify the input, so I
 
 I also added two not ofund boundary cases where the search element was smaller than the smallest element and larger than the largest element in the array. 
 
-Finally, to show the binary search works for different comparable T types, I added a test for a string array, that it is generic neough to work with non-numeric.
+Finally, to show the binary search works for different comparable T types, I added a test for a string array, that it is generic enough to work with non-numeric.
 
 Also following the instructions didn't include any tests for unsorted arrays, since the behaviors for those are not explicitly specificed and not required to be tested for closed box testing. 
 
@@ -52,10 +54,12 @@ For input validation, I included three seperate tests to trigger each IllegalArg
 
 The specification stated that the binary search behavior on an unsorted array is underspecified. So based on that I decieded not to enforce sort or check for it since it would make in O(n) run time instead of O(log n)
 
+Because that behavior was underspecified, I treated it as outside of closed-box testing, and I did not create any open-box tests for it either, since no defined ‘correct’ behavior exists.
+
 # Comparison of Approach
 
-Both closed-box and open-box testing both compliment each other. The closed-box testing focused on the binary search functional correctness according to the problem specification, ensuring that valid and invalid inputs were handled as required. While the open-box tests, ensured complete internal coverage, confirmed every path, condition, and exception in the implementation was execute. Both the sets found bugs in my code. I forgot to cover a lot of my input testing and then I messed up forgetting to include my else statement for my branch. After fixing everything they both gave me confidence that the implementation is correct and tested in-depth. 
+Both closed-box and open-box testing both complement each other. The closed-box testing focused on the binary search functional correctness according to the problem specification, ensuring that valid and invalid inputs were handled as required. While the open-box tests, ensured complete internal coverage, confirmed every path, condition, and exception in the implementation was execute. Both the sets found bugs in my code. I forgot to cover a lot of my input testing and then I messed up forgetting to include my else statement for my branch. After fixing everything they both gave me confidence that the implementation is correct and tested in-depth. 
 
 # Summary
 
-Overall, I applied equivalence parititoning and boundary value analysis to designa a thorough closed-box testing suite and achieved full coverage through open-box testing. I didn't include sortedness checking based on instructions. 
+Overall, I applied equivalence partitioning and boundary value analysis to design a thorough closed-box testing suite and achieved full coverage through open-box testing. I didn't include sortedness checking based on instructions. 
