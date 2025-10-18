@@ -27,7 +27,7 @@ public class BinarySearch {
             else if (compare < 0) {
                 right = mid - 1; // Search the left half
             }
-            else if (compare > 0) {
+            else {
                 left = mid + 1; // search the right half
             }
         }
