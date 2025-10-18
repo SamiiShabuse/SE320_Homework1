@@ -6,4 +6,24 @@ One part of the requirements above were (identified as) underspecified, yet you 
 Briefly compare your closed-box and open-box tests. Did either approach find bugs in your implementation that the other did not (or would not have)? If not, can you imagine scenarios where it could have? (Hint: closed-box and code-coverage-driven open-box tests are complementary, each is better at finding certain kinds of bugs the other is not as good at finding; see the lecture slides.)
 Please submit your write-up as a .txt, .md, or .pdf file.
 
-#
+# SE320 Homework 1
+
+Name: Samii Shabuse
+Course: SE320 - Software Verification and Validation
+Assignment: Homework 1 
+
+# Overview
+
+For this assignment I had implemented a generic binary search in java. The function returns the index of a found elemnet or throws
+the necessary exception based on elementing or invalid input.
+
+The assignment required validating this method through two types of testing:
+    - Closed-Box Testing (requirements testing with no code visibility)
+    - Open-Box Testing (code-coverage, branch-coverage, and with code visibility)
+Both were using JUnit testing
+
+
+# Closed-Box Testing
+
+# Open-Box Testing 
+

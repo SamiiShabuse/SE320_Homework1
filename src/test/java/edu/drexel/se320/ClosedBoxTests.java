@@ -143,6 +143,31 @@ public class ClosedBoxTests extends BinarySearchBase {
         );
         assertTrue(ex.getMessage() != null && !ex.getMessage().isBlank());
     }
+    
+    @Test
+    @DisplayName("Target not found below minimum")
+    void notFoundBelowMin() {
+    Integer[] arr = {10, 20, 30};
+    assertThrows(NoSuchElementException.class,
+        () -> BinarySearch.binarySearchImplementation(arr, 5));
+    }
+
+    @Test
+    @DisplayName("Target not found above maximum")
+    void notFoundAboveMax() {
+        Integer[] arr = {10, 20, 30};
+        assertThrows(NoSuchElementException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, 40));
+    }
+
+    @Test
+    @DisplayName("Single element not found")
+    void singleElementNotFound() {
+        Integer[] arr = {42};
+        assertThrows(NoSuchElementException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, 7));
+    }
+
 
     // @Test
     // public void testExceptions() {
