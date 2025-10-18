@@ -12,11 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.DisplayName;
+import java.util.NoSuchElementException;
+
 
 
 public class OpenBoxTests extends BinarySearchBase {
     @Test
-    @DisplayName("Found immediately at first mid (cmp == 0)")
+    @DisplayName("Found immediately at first mid (cmp (compare) == 0)")
     void foundImmediateMid() {
         Integer[] arr = {1, 3, 5, 7, 9}; // mid=5 on first step
         int idx = BinarySearch.binarySearchImplementation(arr, 5);
@@ -38,5 +40,45 @@ public class OpenBoxTests extends BinarySearchBase {
         int idx = BinarySearch.binarySearchImplementation(arr, 12);
         assertEquals(12, arr[idx]);
     }
+
+    @Test
+    @DisplayName("Not found: throws NoSuchElementException after loop terminates")
+    void notFoundThrowsAfterLoop() {
+        Integer[] arr = {1, 2, 4, 8, 16, 32};
+        assertThrows(NoSuchElementException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, 3));
+    }
+
+    @Test
+    @DisplayName("Null array: IllegalArgumentException")
+    void nullArrayThrows() {
+        assertThrows(IllegalArgumentException.class,
+            () -> BinarySearch.binarySearchImplementation(null, 1));
+    }
+
+    @Test
+    @DisplayName("Empty array: IllegalArgumentException")
+    void emptyArrayThrows() {
+        Integer[] arr = {};
+        assertThrows(IllegalArgumentException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, 1));
+    }
+
+    @Test
+    @DisplayName("Null target: IllegalArgumentException")
+    void nullTargetThrows() {
+        Integer[] arr = {1, 2, 3};
+        assertThrows(IllegalArgumentException.class,
+            () -> BinarySearch.binarySearchImplementation(arr, null));
+    }
+
+    @Test
+    @DisplayName("Duplicates: returns an index of any matching element")
+    void duplicatesAnyIndex() {
+        Integer[] arr = {5, 7, 7, 7, 9};
+        int idx = BinarySearch.binarySearchImplementation(arr, 7);
+        assertEquals(7, arr[idx]);
+    }
+
 }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.drexel.se320.OpenBoxTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-10-18T01:43:53.500Z" hostname="SAMIIWORKAHOLIC" time="0.047">
+  <properties/>
+  <testcase name="Null target: IllegalArgumentException" classname="edu.drexel.se320.OpenBoxTests" time="0.033"/>
+  <testcase name="Go left then find (cmp &lt; 0 path exercised)" classname="edu.drexel.se320.OpenBoxTests" time="0.007"/>
+  <testcase name="Go right then find (cmp &gt; 0 path exercised)" classname="edu.drexel.se320.OpenBoxTests" time="0.001"/>
+  <testcase name="Null array: IllegalArgumentException" classname="edu.drexel.se320.OpenBoxTests" time="0.001"/>
+  <testcase name="Found immediately at first mid (cmp == 0)" classname="edu.drexel.se320.OpenBoxTests" time="0.0"/>
+  <testcase name="Empty array: IllegalArgumentException" classname="edu.drexel.se320.OpenBoxTests" time="0.001"/>
+  <testcase name="Duplicates: returns an index of any matching element" classname="edu.drexel.se320.OpenBoxTests" time="0.001"/>
+  <testcase name="Not found: throws NoSuchElementException after loop terminates" classname="edu.drexel.se320.OpenBoxTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

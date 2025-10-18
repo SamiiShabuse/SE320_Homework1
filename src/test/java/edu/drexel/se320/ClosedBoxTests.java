@@ -168,6 +168,14 @@ public class ClosedBoxTests extends BinarySearchBase {
             () -> BinarySearch.binarySearchImplementation(arr, 7));
     }
 
+    @Test
+    @DisplayName("Works with String arrays")
+    void stringArraySearch() {
+        String[] arr = {"a", "b", "c", "foo"};
+        int idx = BinarySearch.binarySearchImplementation(arr, "c");
+        assertEquals("c", arr[idx]);
+    }
+
 
     // @Test
     // public void testExceptions() {
