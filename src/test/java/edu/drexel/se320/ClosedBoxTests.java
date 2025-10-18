@@ -50,7 +50,7 @@ public class ClosedBoxTests extends BinarySearchBase {
     void findMiddle() {
         Integer[] arr = {1, 3, 5, 7, 9};
         int idx = BinarySearch.binarySearchImplementation(arr, 5);
-        assertEquals(5, arr[idx]); // spec: if index returned, arr[idx].equals(target)
+        assertEquals(5, arr[idx]);
     }
 
     @Test
